@@ -1,0 +1,22 @@
+# alter session set container=XEPDB1;
+- 18c에만 있는 개념
+- 예전 버전에는 없음
+- 세션 당 계정을 만들어야 한다
+
+# create user java1 identified by 1234
+- java1이 아이디, 비밀번호 1234로 DB 사용자 계정 생성
+
+# grant create session to java1
+# grant connect to java1
+# grant resource to java1
+- java1 계정에 필요한 권한들을 부여한다
+
+# show user
+- 현재 로그인한 계정을 확인하는 명령어
+
+# connect java1/1234@localhost:1521/XEPDB1
+- 만든 계정으로 접속해보기
+
+# alter user hr 
+- 연습용 hr계정 잠금해제하기
+- 오라클의 기본 연습용 계정
