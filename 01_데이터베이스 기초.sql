@@ -34,6 +34,3 @@
 SHOW USER;
 
 SELECT * FROM employees;
-
-
-
