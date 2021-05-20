@@ -1,3 +1,6 @@
+# sqlplus
+- cmd에서 오라클 DB실행하기
+
 # alter session set container=XEPDB1;
 - 18c에만 있는 개념
 - 예전 버전에는 없음
@@ -20,3 +23,8 @@
 # alter user hr 
 - 연습용 hr계정 잠금해제하기
 - 오라클의 기본 연습용 계정 
+
+# exit
+- DB를 종료한다
+
+# GUI 환경에서 오라클 DB를 편하게 다루기 위해서 SQL Developer를 설치한다
