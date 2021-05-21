@@ -55,12 +55,15 @@ FROM
 GROUP BY
     job_id;
     
+-- GROUP BY에 여러 컬럼을 설정할 수도 있다
 SELECT
-    job_id,
+    job_id, department_id,
     TO_CHAR(AVG(salary * 12 *(1 + NVL(commission_pct, 0))), '999999999.99') AS "JOB별 평균 연봉"
 FROM
     employees
 GROUP BY
+    job_id, department_id
+ORDER BY
     job_id;
 
 SELECT
@@ -72,4 +75,41 @@ GROUP BY
     job_id;
 
 
+-- GROUP BY로 나눠진 그룹에 조건을 주고 싶을 때는 HAVING절을 이용한다
+SELECT job_id, count(*) FROM employees GROUP BY job_id;
 
+-- ※ WHERE는 그룹이 생성되기 전에 모든 행에 적용되는 조건이다
+SELECT job_id, count(*) FROM employees WHERE salary <= 5000 GROUP BY job_id;
+
+-- 회사에 5명 이하밖에 없는 직책을 모두 출력
+SELECT job_id, count(*) FROM employees GROUP BY job_id HAVING count(*) <= 5;
+
+-- 회사에 3명 이하밖에 없는 직책을 모두 출력
+SELECT job_id, count(*) FROM employees GROUP BY job_id HAVING count(*) <= 3;
+
+
+-- 연습1 : 부서별 최대 급여와 최소 급여를 출력하되 최대 급여가 5000이상인 부서만 출력해보세요
+SELECT
+    department_id,
+    MAX(salary),
+    MIN(salary)
+FROM
+    employees
+GROUP BY
+    department_id
+HAVING
+    MAX(salary) >= 5000
+ORDER BY
+    department_id;
+
+-- 연습2 : 부서별 평균 급여를 출력하되 해당 부서에 소속된 사원이 10명 이상인 부서만 출력해보세요
+SELECT
+    department_id,
+    round(AVG(salary), 2)
+FROM
+    employees
+GROUP BY
+    department_id
+HAVING
+    COUNT(*) >= 10;
+    
