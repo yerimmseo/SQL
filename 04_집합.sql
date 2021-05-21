@@ -21,4 +21,3 @@ SELECT * FROM departments WHERE department_id BETWEEN 30 AND 50;
 SELECT * FROM departments WHERE department_id BETWEEN 30 AND 50
 MINUS
 SELECT * FROM departments WHERE department_id BETWEEN 10 AND 40;
-

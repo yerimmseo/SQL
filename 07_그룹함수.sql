@@ -112,4 +112,3 @@ GROUP BY
     department_id
 HAVING
     COUNT(*) >= 10;
-    

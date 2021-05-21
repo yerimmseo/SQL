@@ -106,4 +106,3 @@ FROM
 SELECT DISTINCT job_id FROM employees;
 SELECT DISTINCT department_id FROM employees;
 SELECT DISTINCT manager_id FROM employees;
-
