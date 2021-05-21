@@ -47,5 +47,3 @@ HKEY_LOCAL_MACHINE - SOFTWARE - O버튼 클릭후 Oracle 파일 잔체 삭제하
 * 다시깔때 보안 프로그램 끄기  
 
 * 마지막으로 꼭 꼭 무조건 C: 드라이브에 설치하기
-
-끝
