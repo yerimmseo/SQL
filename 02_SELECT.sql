@@ -91,7 +91,7 @@ SELECT last_name, salary * (1 + commission_pct) FROM employees;
 SELECT last_name, salary * (1 + NVL(commission_pct, 0)) AS 보너스적용후 FROM employees;
 
 
--- 연습2 : 모든 사원들의 사번/가족이름/연봉을 출력해보세요 (salay는 월급입니다, 별칭 사용할 것)
+-- 연습2 : 모든 사원들의 사번/가족이름/연봉을 출력해보세요 (salary는 월급입니다, 별칭 사용할 것)
 SELECT 
     employee_id AS 사번, 
     last_name AS 가족이름,
