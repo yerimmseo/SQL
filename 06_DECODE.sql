@@ -2,7 +2,6 @@
     # DECODE
     - 특정 컬럼의 값을 통해서 표시할 데이터를 선택한다
     - switch case 같은 역할을 한다
-    - 
 */
 SELECT * FROM employees;
 
@@ -32,7 +31,9 @@ SELECT DISTINCT
 FROM
     employees
 WHERE
-    job_id LIKE '%CLERK%'; SELECT
+    job_id LIKE '%CLERK%';
+
+SELECT
       last_name,
       job_id,
       salary        AS before_salary,

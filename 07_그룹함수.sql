@@ -30,7 +30,7 @@ SELECT department_id, count(*) FROM employees GROUP BY department_id;
 SELECT
     department_id,
     MAX(hire_date) AS "가장 최근",
-    MIN (hire_date) AS "가장 오래된 인간"
+    MIN (hire_date) AS "가장 오래된"
 FROM
     employees
 GROUP BY
