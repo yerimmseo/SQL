@@ -14,6 +14,9 @@
 # grant resource to java1
 - java1 계정에 필요한 권한들을 부여한다
 
+# 계정의 데이터 보관용량(테이블 스페이스)을 제한 없음으로 설정
+ALTER USER java1 DEFAULT TABLESPACE users QUOTA unlimited ON users;
+
 # show user
 - 현재 로그인한 계정을 확인하는 명령어
 
@@ -28,4 +31,3 @@
 - DB를 종료한다
 
 # GUI 환경에서 오라클 DB를 편하게 다루기 위해서 SQL Developer를 설치한다
-
