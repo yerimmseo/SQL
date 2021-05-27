@@ -13,7 +13,24 @@ SELECT
     salary * (1 + NVL(commission_pct, 0)) AS comission_apply,
     min_salary,
     max_salary,
-    TO_CHAR(ROUND((salary *(1 + NVL(commission_pct, 0)) - min_salary) / (max_salary - min_salary) * 100, 2), '990.99') AS "%"
+    TO_CHAR(ROUND((salary * (1 + NVL(commission_pct, 0)) - min_salary) / (max_salary - min_salary) * 100, 2), '990.99') AS "%"
 FROM
          employees
     INNER JOIN jobs USING ( job_id );
+    
+
+-- salary - min_salary : 가장 적게 받는 사람(0%)보다 내가 더 받는 금액
+-- max_salary - min_salary : 더 받을 수 있는 최대 금액
+SELECT
+    employee_id,
+    first_name,
+    salary,
+    commission_pct,
+    TO_CHAR(
+        (salary * (1 + NVL(commission_pct, 0)) - min_salary) / (max_salary - min_salary) * 100 
+        , '990.99') || '%' AS "Salary Percentage"
+FROM
+         employees
+    INNER JOIN jobs USING ( job_id )
+ORDER BY
+    "Salary Percentage" DESC;
