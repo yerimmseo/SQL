@@ -7,7 +7,7 @@
     
       ※ CRUD - Creat. Read. Update. Delete. 모든 프로그램에는 CRUD가 다양한 형태로 존재한다.
     
-    # DDL (Data Definitaion Language, 데이터 정의어)
+    # DDL (Data Definition Language, 데이터 정의어)
     - 테이블, 시퀀스, 뷰 ... 등 DB에서 사용하는 오브젝트 구조를 생성할 때 사용하는 명령어
     - CREATE : DB 오브젝트 생성
     - DROP : DB 오브젝트 삭제
@@ -25,7 +25,6 @@ CREATE TABLE coffees (
     cname VARCHAR2(50),
     price NUMBER(5)
 );
-
 DESC coffees;
 
 -- DROP TABLE 테이블명;
