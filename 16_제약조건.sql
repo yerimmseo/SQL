@@ -218,11 +218,54 @@ INSERT INTO student VALUES (4, '이길동', '수원시 장안구', 30);
 
 SELECT * FROM student INNER JOIN student_major USING (smajor_id) ORDER BY stu_id;
 
+----------------------------------------------
+-- 다른 테이블에서 FK로 참조되는 테이블의 행을 아무생각없이 삭제하면 무결성을 해칠 위험이 있음
+SELECT * FROM fruits3;
+SELECT * FROM fruit_locations;
 
+INSERT INTO fruits3(fid, fname, fcolor, fsize, lid) VALUES(3, 'Kiwi', 'Olive', 'S', 10);
 
+COMMIT;
 
+DELETE FROM fruit_locations WHERE lid = 40;
 
+ROLLBACK;
 
+/*
+    # ON DELETE 제약 조건
+    - 자식 레코드가 참조하고 있는 부모 레코드를 삭제할 때의 정책을 결정할 수 있다
+    - CASCADE, SET NULL, RESTRICT
+    
+    # ON DELETE CASCADE
+    - 부모 레코드를 삭제하면 자식 레코드를 모두 함께 삭제한다
+    
+    # ON DELETE SET NULL
+    - 부모 레코드를 삭제하면 참조하던 자식 레코드의 값을 null로 변경한다
+    
+    # RESTRICT
+    - 자식 레코드가 있으면 부모 레코드를 삭제할 수 없게 한다
+    - ON DELETE를 설정하지 않으면 된다
+*/
 
+-- # CASCADE TEST
+SELECT * FROM user_constraints WHERE table_name = 'FRUITS3';
 
+ALTER TABLE fruits3 DROP CONSTRAINT FRUITS3_LID_FK;
+ALTER TABLE fruits3
+    ADD CONSTRAINT fr3_lid_fk FOREIGN KEY ( lid )
+        REFERENCES fruit_locations ( lid ) ON DELETE CASCADE;
 
+SELECT * FROM fruits3;
+SELECT * FROM fruit_locations;
+
+DELETE FROM fruit_locations WHERE lid = 10;
+
+ROLLBACK;
+
+-- # SET NULL TEST
+ALTER TABLE fruits3 DROP CONSTRAINT FRUITS3_LID_FK;
+ALTER TABLE fruits3
+    ADD CONSTRAINT FRUITS3_LID_FK FOREIGN KEY ( lid )
+        REFERENCES fruit_locations ( lid ) ON DELETE SET NULL;
+
+DELETE FROM fruit_locations WHERE lid = 10;
